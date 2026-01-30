@@ -14,7 +14,7 @@ public class BotService extends TelegramLongPollingBot {
 
     public BotService(BotConfig bot){
         super(bot.getToken());
-        this.bot = bot;
+        bot.getName();
     }
  
 
