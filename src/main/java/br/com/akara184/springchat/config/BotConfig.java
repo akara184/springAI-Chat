@@ -2,7 +2,6 @@ package br.com.akara184.springchat.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 @Configuration
 @ConfigurationProperties(prefix = "telegram.bot")
