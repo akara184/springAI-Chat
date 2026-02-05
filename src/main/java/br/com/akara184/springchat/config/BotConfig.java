@@ -7,25 +7,26 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "telegram.bot")
 public class BotConfig {
     
-    private String name;
     private String token;
-       
+    private String username;
 
     public BotConfig() {
     }
 
     public String getName() {
-        return name;
+        return username;
     }
-    public void setName(String name) {
-        this.name = name;
+
+    public void setName(String username) {
+        this.username = username;
     }
+
     public String getToken() {
         return token;
     }
+
     public void setToken(String token) {
         this.token = token;
     }
-   
-  
+
 }

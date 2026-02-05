@@ -1,36 +1,39 @@
 package br.com.akara184.springchat.services;
 
-import org.springframework.stereotype.Service;
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;
+import org.telegram.telegrambots.longpolling.interfaces.LongPollingUpdateConsumer;
+import org.telegram.telegrambots.longpolling.starter.SpringLongPollingBot;
+import org.telegram.telegrambots.longpolling.util.LongPollingSingleThreadUpdateConsumer;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.generics.TelegramClient;
+
 import br.com.akara184.springchat.config.BotConfig;
 
+class BotService implements SpringLongPollingBot, LongPollingSingleThreadUpdateConsumer {
 
-@Service
-public class BotService extends TelegramLongPollingBot {  
-
-    private BotConfig bot;
-
-
-    public BotService(BotConfig bot){
-        super(bot.getToken());
-        bot.getName();
+    private final TelegramClient telegramClient;
+    private BotConfig botConfig;
+    
+    public BotService(BotConfig botConfig) {
+        this.botConfig = botConfig;
+        telegramClient = new OkHttpTelegramClient(getBotToken());
     }
- 
-
+   
     @Override
-    public String getBotUsername() {
-        return bot.getName();
+    public String getBotToken() {
+        return botConfig.getToken();
     }
 
     @Override
-    public void onUpdateReceived(Update update) {
-        var msg = update.getMessage();
-        var user = msg.getFrom();
-
-        System.out.println(user.getFirstName() + " wrote " + msg.getText());
+    public LongPollingUpdateConsumer getUpdatesConsumer() {
+        return this;
     }
-  
+
+    @Override
+    public void consume(Update update) {
+        
+    }
+
 
         
 }

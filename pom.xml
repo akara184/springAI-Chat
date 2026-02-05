@@ -40,9 +40,15 @@
         <!-- Source: https://mvnrepository.com/artifact/org.telegram/telegrambots -->
         <dependency>
           <groupId>org.telegram</groupId>
-          <artifactId>telegrambots</artifactId>
-          <version>6.9.7.1</version>
-          <scope>compile</scope>
+          <artifactId>telegrambots-client</artifactId>
+          <version>9.2.1</version>
+        </dependency>
+
+
+        <dependency>
+          <groupId>org.telegram</groupId>
+          <artifactId>telegrambots-springboot-longpolling-starter</artifactId>
+          <version>9.2.1</version>
         </dependency>
         
         <!-- Spring Boot Test -->
