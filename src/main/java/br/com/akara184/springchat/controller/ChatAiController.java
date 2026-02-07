@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ChatIaController {
+public class ChatAiController {
 
     private final GoogleGenAiChatModel chatModel;
 
     @Autowired
-    public ChatIaController(GoogleGenAiChatModel chatModel) {
+    public ChatAiController(GoogleGenAiChatModel chatModel) {
         this.chatModel = chatModel;
     }
 

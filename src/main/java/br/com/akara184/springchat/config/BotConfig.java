@@ -13,14 +13,6 @@ public class BotConfig {
     public BotConfig() {
     }
 
-    public String getName() {
-        return username;
-    }
-
-    public void setName(String username) {
-        this.username = username;
-    }
-
     public String getToken() {
         return token;
     }
@@ -29,4 +21,16 @@ public class BotConfig {
         this.token = token;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    
+    
 }
+
+
