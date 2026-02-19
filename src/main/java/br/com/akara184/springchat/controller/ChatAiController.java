@@ -1,27 +1,30 @@
 package br.com.akara184.springchat.controller;
 
-import java.util.Map;
-
-import org.springframework.ai.google.genai.GoogleGenAiChatModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.akara184.springchat.services.ChatAiService;
+
+// Entao esse controler é basicamente onde vai passar a mensagem nao necessariamente precisa ser aq 
 @RestController
+@RequestMapping("/api/chat")
 public class ChatAiController {
 
-    private final GoogleGenAiChatModel chatModel;
+    private final ChatAiService chatService;
 
-    @Autowired
-    public ChatAiController(GoogleGenAiChatModel chatModel) {
-        this.chatModel = chatModel;
+    public ChatAiController(ChatAiService chatService) {
+        this.chatService = chatService;
     }
 
-    @GetMapping("/ai/generate")
-    public Map generate(@RequestParam(value = "message") String message) {
-        return Map.of("generation", chatModel.call(message));
+    @PostMapping
+    public ChatAiResponse chat(@RequestBody String message) {
+        return new ChatAiResponse(this.chatService.chat(message));
+    }
+    
+    public record ChatAiResponse(String message) {
         
     }
-
+    
 }

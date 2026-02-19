@@ -11,7 +11,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.generics.TelegramClient;
 
 import br.com.akara184.springchat.config.BotConfig;
-import br.com.akara184.springchat.handler.ReceiveMessageHandler;
+import br.com.akara184.springchat.handler.SendMessageHandler;
 
 
 @Service
@@ -19,10 +19,10 @@ public class BotService implements SpringLongPollingBot, LongPollingSingleThread
 
     private final TelegramClient telegramClient;
     private BotConfig botConfig;
-    private ReceiveMessageHandler updateHandler;
+    private SendMessageHandler sendMessageHandler;
     
-    public BotService(BotConfig botConfig, ReceiveMessageHandler updateHandler) {
-        this.updateHandler = updateHandler;
+    public BotService(BotConfig botConfig, SendMessageHandler sendMessageHandler) {
+        this.sendMessageHandler = sendMessageHandler;
         this.botConfig = botConfig;
         telegramClient = new OkHttpTelegramClient(getBotToken());
     }
@@ -39,7 +39,7 @@ public class BotService implements SpringLongPollingBot, LongPollingSingleThread
 
     @Override
     public void consume(Update update) {
-        updateHandler.ReceiveMessageHandler(update, telegramClient); //Nao sei ainda oq vou fazer 
+        sendMessageHandler.sendMessage(update, telegramClient);
     }
 
     @AfterBotRegistration

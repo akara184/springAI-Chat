@@ -1,3 +1,4 @@
+
 package br.com.akara184.springchat.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;

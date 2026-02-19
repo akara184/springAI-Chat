@@ -10,8 +10,8 @@ public class SpringchatApplication {
 
     public static void main(String[] args) throws TelegramApiException {
         SpringApplication.run(SpringchatApplication.class, args);
-
     }
+    
 }
 
 
