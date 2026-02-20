@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 public class ChatAiService {
 
     private final ChatClient chatClient;
-
+    
+    
     public ChatAiService(ChatClient.Builder chatClient) {
         this.chatClient = chatClient.build();
     }
