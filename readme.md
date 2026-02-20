@@ -12,7 +12,7 @@ telegram.bot.token=YOUR_TELEGRAM_BOT_TOKEN
 telegram.bot.username=YOUR_BOT_USERNAME
 ```
 
-## Running
+### Running
 ```bash
 mvn spring-boot:run
 ```
